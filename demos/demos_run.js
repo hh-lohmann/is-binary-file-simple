@@ -112,7 +112,7 @@ const showSourcecode=function(elem,demo,type){
     myContent.innerHTML=`<a href="./${demo}.js">Download this code</a> and run it with Node / Bun`;
   }
   if(type==='sourceInstalled'){
-    myContent.innerHTML=`This code requires <a href="#" onclick="document.querySelector(\'#github_readme_demos_switch>a\').click();">predefined-test-files</a> to be installed. <a href="./${demo}.js">Download the code</a> and run it with Node / Bun`;
+    myContent.innerHTML=`This code requires <a href="#" onclick="document.querySelector(\'#github_readme_demos_switch>a\').click();">is-binary-file-simple</a> to be installed. <a href="./${demo}.js">Download the code</a> and run it with Node / Bun`;
   }
 }
 
