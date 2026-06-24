@@ -5,12 +5,12 @@ import {openSync,readSync,statSync} from 'node:fs';
 /** @import {IsBinaryFile} from './types.d.ts' */
 
 /** Check if a file is binary
- * @example isBinaryFile('README.md')
+ * @example isBinaryFileSimple('README.md')
  * @param file - The file to check (name / path)
  * @returns `true` if file is binary, `false` else
  * @type {IsBinaryFile}
  */
-export const isBinaryFile=function(file){
+export const isBinaryFileSimple=function(file){
   const myFile={fd:openSync(file,'r')};
   let sampleLength=128;
   if(statSync(file).size<sampleLength) sampleLength=statSync(file).size;

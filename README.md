@@ -1,15 +1,17 @@
 ###### npm package
 
-# is-binary-file
+# is-binary-file-simple
 
 Check with minimal effort if a file is binary, e.g. before trying to apply text file methods
 
-*[hh lohmann &lt;hh.lohmann@gmail.com&gt;](mailto:hh.lohmann@gmail.com?subject=is-binary-file)*
+Does not conflict with non-English character encodings, see [Demo](#demo) with Hebrew text.
+
+*[hh lohmann &lt;hh.lohmann@gmail.com&gt;](mailto:hh.lohmann@gmail.com?subject=is-binary-file-simple)*
 
 <!-- see https://hh-lohmann.github.io/github-readme-pages-switch -->
 <p align="center" id="github_readme_pages_switch" style="display:none;">
   <b><i>This page may be displayed more optimal in its
-  <a href="https://hh-lohmann.github.io/is-binary-file">GitHub Pages view</a>
+  <a href="https://hh-lohmann.github.io/is-binary-file-simple">GitHub Pages view</a>
   </i></b>
 </p>
 
@@ -22,9 +24,9 @@ For being fast and simple, the **[file](#file)** is not fully analyzed (see [Det
 ## Synopsis
 
 ```js
-  import { isBinaryFile } from 'is-binary-file'
+  import { isBinaryFileSimple } from 'is-binary-file-simple'
 
-  isBinaryFile( file )
+  isBinaryFileSimple( file )
 ```
 
 
@@ -44,7 +46,7 @@ File to check (filename with or without path)
 
 ```js
   const getFirstLine = async function( file ){
-    if( isBinaryFile( file ) ){
+    if( isBinaryFileSimple( file ) ){
       console.log( 'Binary files cannot be read by line' );
     }
     else{
@@ -60,7 +62,7 @@ File to check (filename with or without path)
 
 <!-- see https://hh-lohmann.github.io/github-readme-demos-switch -->
 <p id="github_readme_demos_switch">
-  See <a href="https://hh-lohmann.github.io/is-binary-file/demos"
+  See <a href="https://hh-lohmann.github.io/is-binary-file-simple/demos"
   onclick="if( location.hostname.replace( /\d/g, '' ).replaceAll( '.', '' ) === ''
   || location.hostname === 'localhost' ){ this.href='./demos/';
   alert( 'Dev environment detected - switching to local version' ); }"
@@ -73,22 +75,22 @@ File to check (filename with or without path)
 Pick for your preferred package manager:
 
 ```shell
-  npm i is-binary-file
+  npm i is-binary-file-simple
 ```
 
 ```shell
-  pnpm i is-binary-file
+  pnpm i is-binary-file-simple
 ```
 
 ```shell
-  bun i is-binary-file
+  bun i is-binary-file-simple
 ```
 
 ```shell
   # For Yarn you should double check docs for your and / or
   # current Yarn version, newer versions do not treat `i package_name`
   # as an alias for `add ...` and exclude global installations
-  yarn add is-binary-file
+  yarn add is-binary-file-simple
 ```
 
 
@@ -104,7 +106,7 @@ Pick for your preferred package manager:
 
 ## Source Code
 
-  * GitHub: <https://github.com/hh-lohmann/is-binary-file>
+  * GitHub: <https://github.com/hh-lohmann/is-binary-file-simple>
 
 
 ## License

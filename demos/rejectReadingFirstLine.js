@@ -3,7 +3,7 @@
 import {openSync,readSync,rmSync,statSync,writeFileSync} from 'node:fs';
 import { tmpdir } from 'node:os';
 
-import { isBinaryFile } from 'is-binary-file' ;
+import { isBinaryFileSimple } from 'is-binary-file-simple' ;
 
 /** Reading first line from text file
  *  - Error if given file is binary
@@ -13,7 +13,7 @@ import { isBinaryFile } from 'is-binary-file' ;
  * @type {(file:string)=>void}
  */
 const getFirstLine = function( file ){
-  if( isBinaryFile( file ) ){
+  if( isBinaryFileSimple( file ) ){
     console.log( `\n# Error:\n# Binary file "${ file }" cannot be read by line\n` );
   }
   else{
@@ -21,26 +21,30 @@ const getFirstLine = function( file ){
       fd: openSync(file,'r'),
       size: statSync(file).size
     };
-    let myLine='';
-    while( myLine.slice(-1)!=='\n' && myLine.length <= theFile.size ){
-      let mySample=Buffer.alloc(1);
-      readSync(theFile.fd,mySample,0,1,myLine.length);
-      myLine += mySample.toString();
+    let myBytes='';
+    while( myBytes.slice(-1)!=='\n' && myBytes.length <= theFile.size ){
+      let myPeek=Buffer.alloc(1);
+      readSync(theFile.fd,myPeek,0,1,myBytes.length);
+      myBytes += myPeek;
     }
-    console.log( `\n# First line of "${ file }":\n${ myLine }\n` );
+    console.log( `\n# First line of "${ file }":` );
+    if(myBytes){
+      let myLine=Buffer.alloc((myBytes.length-1));
+      readSync(theFile.fd,myLine,0,(myBytes.length-1),0)
+      console.log(myLine.toString());
+    }
   }
 }
 
+/* Test for Hebrew */
 // Create testfiles
 const myRandomName=crypto.randomUUID().split('-')[0];
 const myBuffer=Buffer.alloc(12, '\u0007');
-writeFileSync( `${tmpdir()}/random_${myRandomName}_1`, 'I am a textfile' );
+writeFileSync( `${tmpdir()}/random_${myRandomName}_1`, 'אני קובץ טקסט\nבאמת' );
 writeFileSync( `${tmpdir()}/random_${myRandomName}_2`, myBuffer );
-
 // Test
 getFirstLine( `${tmpdir()}/random_${myRandomName}_1` );
 getFirstLine( `${tmpdir()}/random_${myRandomName}_2` );
-
 // Delete testfiles
 rmSync( `${tmpdir()}/random_${myRandomName}_1` );
 rmSync( `${tmpdir()}/random_${myRandomName}_2` );
