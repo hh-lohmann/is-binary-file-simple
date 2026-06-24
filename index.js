@@ -12,11 +12,14 @@ import {openSync,readSync,statSync} from 'node:fs';
  */
 export const isBinaryFileSimple=function(file){
   const myFile={fd:openSync(file,'r')};
-  let sampleLength=128;
+  let sampleLength=256;
   if(statSync(file).size<sampleLength) sampleLength=statSync(file).size;
   let myBuffer=Buffer.alloc(sampleLength);
   readSync(myFile.fd,myBuffer,0,sampleLength,0);
   const mySample=myBuffer.toString();
+  // PDF
+  if(mySample.slice(0,5)==='%PDF-') return true;
+  // else
   if(JSON.stringify(mySample)!==JSON.stringify(mySample.replace(/[\u0000-\u0009\u000B-\u000C\u000E-\u0019]/g,''))) return true;
   return false;
 }

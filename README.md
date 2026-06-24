@@ -18,7 +18,7 @@ Does not conflict with non-English character encodings, see [Demo](#demo) with H
 
 ## Caution
 
-For being fast and simple, the **[file](#file)** is not fully analyzed (see [Details](#details)), but sufficently enough for every day files. **It is not a tool against malicious files hiding executable code in seemingly harmless text files**.
+For being fast and simple, the **[file](#file)** is not fully analyzed (see [Details](#details)), but sufficently enough for every day files. **It is not a tool against malicious files hiding executable code in seemingly harmless text files** and of course not a validator for potentially malformed files.
 
 
 ## Synopsis
@@ -96,7 +96,9 @@ Pick for your preferred package manager:
 
 ## Details
 
-  * The first 128 Bytes of the given **[file](#file)** are checked for containing [Control Characters](#rfc-20-ascii-format-for-network-interchange-control-characters). If Control Characters (execpt LF (Line Feed) and CR (Carriage Return) for line breaks) exist, the file is binary.
+  * The first 256 Bytes of the given **[file](#file)** are checked for containing [Control Characters](#rfc-20-ascii-format-for-network-interchange-control-characters). If Control Characters (execpt LF (Line Feed) and CR (Carriage Return) for line breaks) exist, the file is binary.
+
+  * For PDFs the [magic signature](#wikipedia-list-of-file-signatures) is checked
 
 
 ## Tests
@@ -119,6 +121,9 @@ Pick for your preferred package manager:
 ### RFC 20: ASCII format for network interchange: Control Characters
   * <https://datatracker.ietf.org/doc/html/rfc20#section-5.2>
 
+### Wikipedia: List of file signatures
+  * NB: File signatures are often called "magic number / pattern / bytes"
+  * <https://en.wikipedia.org/wiki/List_of_file_signatures>
 
 
 

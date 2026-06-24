@@ -1,12 +1,17 @@
 {
   "name": "is-binary-file-simple",
   "description": "Check with minimal effort if a file is binary, e.g. before trying to apply text file methods",
-  "keywords": [ "check", "file", "binary", "text" ],
+  "keywords": [
+    "check",
+    "file",
+    "binary",
+    "text"
+  ],
   "author": {
     "name": "hh lohmann",
     "email": "hh.lohmann@gmail.com"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,5 +23,12 @@
   "exports": {
     "types": "./types.d.ts",
     "default": "./index.js"
+  },
+  "scripts": {
+    "test": "node --test ./tests/**/*.test.*"
+  },
+  "dependencies": {
+    "node-test-bootstrap": "github:hh-lohmann/node-test-bootstrap",
+    "predefined-test-files": "1.0.10"
   }
 }
