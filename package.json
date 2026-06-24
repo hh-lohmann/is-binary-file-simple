@@ -1,0 +1,22 @@
+{
+  "name": "is-binary-file",
+  "description": "Check with minimal effort if a file is binary, e.g. before trying to apply text file methods",
+  "keywords": [ "check", "file", "binary", "text" ],
+  "author": {
+    "name": "hh lohmann",
+    "email": "hh.lohmann@gmail.com"
+  },
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hh-lohmann/is-binary-file.git"
+  },
+  "bugs": "https://github.com/hh-lohmann/is-binary-file/issues",
+  "homepage": "https://hh-lohmann.github.io//is-binary-file",
+  "type": "module",
+  "exports": {
+    "types": "./types.d.ts",
+    "default": "./index.js"
+  }
+}

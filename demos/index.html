@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Demos: is-binary-file
+  </title>
+  <link rel="stylesheet" href="./demos.css">
+  <script type="module" src="./demos_run.js" defer></script>
+</head>
+<body>
+  <h1>
+    Demos for is-binary-file
+  </h1>
+  <!-- see https://hh-lohmann.github.io/github-readme-demos-switch -->
+  <p id="github_readme_demos_switch">
+    See <a href="https://hh-lohmann.github.io/is-binary-file"
+    onclick="if( location.hostname.replace( /\d/g, '' ).replaceAll( '.', '' ) === ''
+    || location.hostname === 'localhost' ){ this.href='/';
+    alert( 'Dev environment detected - switching to local version' ); }"
+    >main page</a> for general information about is-binary-file
+  </p>
+  <section class="demos">
+    <section class="group reject">
+      <h2>
+        Reject binary file from processing
+      </h2>
+      <section class="variant readingFirstLine">
+        <h3>
+          Try to read first line only if file is not a binary 
+        </h3>
+        <div class="demo">
+          <span class="placeholder">... loading ...</span>
+        </div>
+      </section>
+    </section>
+  </section>
+  <p class="endspacer"></p>
+</body>
+</html>
